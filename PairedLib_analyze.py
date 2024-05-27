@@ -170,6 +170,8 @@ def aio_heatmap(position,files,context,bool):
         # return [float(i) / normalization * 100 for i in raw]
         return [float(i) / max(raw) * 100 for i in raw]
 
+    rf = pd.read_excel(f'{path}{aio_table}', sheet_name='purity',
+                   index_col=0).dropna()
     share_column = []
     counter = [0,0]
     for file in files:
