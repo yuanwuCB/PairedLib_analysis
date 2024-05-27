@@ -5,8 +5,6 @@ context2editor = {'CCG':'Tad-CBE(CCG3)','CCT':'Tad-CBE(CCT2)','GCT':'Tad-CBE(GCT
                   'GCG':'Tad-CBE(GCG1)','TCA':'Tad-CBE(TCA3)','ACC':'Tad-CBE(ACC3)',
                   'ACT':'Tad-CBE(ACT4)'}
 
-# editor_order = ['Tad-CBE2.4','Tad-CBE3.1','TadCBEd','rAPOBEC1-BE4','Tad-CBEs(NCN)']
-
 editor_order = ['Tad-CBE2.4','Tad-CBE3.1','TadCBEd','rAPOBEC1-BE4',
                 'Tad-CBE(ACA1)','Tad-CBE(ACT4)','Tad-CBE(ACC3)','Tad-CBE(ACG1)',
                 'Tad-CBE(TCA3)','Tad-CBE(TCT1)','Tad-CBE(TCC1)','Tad-CBE(TCG2)',
@@ -29,9 +27,6 @@ editor2file = {'Tad-CBE2.4':'050e_228lib_S1_L001.xlsx','Tad-CBE3.1':'156e_228lib
                 'Tad-CBE(GCA1)':'pYX206ua_228lib_S15_L001.xlsx','Tad-CBE(GCT1)':'pYW095ua_228lib_S16_L001.xlsx',
                 'Tad-CBE(GCC3)':'pYW096uc_228lib_S20_L001.xlsx','Tad-CBE(GCG1)':'pYX207ua_228lib_S18_L001.xlsx',
                 'Tad-CBEs(NCN)':'Tad-CBEs(NCN).xlsx'}
-
-# rf = pd.read_excel(f'{path}{aio_table}', sheet_name='purity',
-#                    index_col=0).dropna()
 
 control = ['Tad-CBE2.4','Tad-CBE3.1','TadCBEd','rAPOBEC1-BE4']
 
