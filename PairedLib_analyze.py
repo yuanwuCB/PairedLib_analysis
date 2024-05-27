@@ -7,21 +7,24 @@ import numpy as np
 from matplotlib import colors
 from matplotlib.colors import LinearSegmentedColormap
 import warnings
+
 warnings.filterwarnings(action='ignore')
+
 # color bar for protospacer plot
 cmap_c = LinearSegmentedColormap.from_list('custom_c',['white',np.array((255,201,212,256))/256.0,np.array((256,45,90,256))/256.0],N=256)
 # aio-table color bar for main figure
 cmap_c_cbar = LinearSegmentedColormap.from_list('custom_a',['white',np.array((256,45,90,256))/256.0],N=256)
 c_sm = plt.cm.ScalarMappable(cmap=cmap_c_cbar,norm=colors.Normalize(vmin=0,vmax=100))
 
-path = '/Users/yuanwu/BaseSpace/010824-nextseq/aio-table/'
+# CONSTANT PARAMETER
+path = '/Users/yuanwu/BaseSpace/010824-nextseq/aio-table/' #
 aio_table = '010824_aio_table_041424_C_unique.xlsx'
-control = ['Tad-CBE2.4','Tad-CBE3.1','TadCBEd','rAPOBEC1-BE4']
+
+# PLOTING FORMAT
 plt.rcParams['font.family'] = ['Arial']
 plt.rcParams.update({'font.size': 7})
-# rf = pd.read_excel(f'{path}{aio_table}', sheet_name='purity',
-#                    index_col=0).dropna()
-def NCN_heatmap():
+
+def NCN_heatmap(): # For Fig. S16
     guide = pd.read_excel(path + aio_table, sheet_name='purity', index_col=0).dropna()
     index = guide.index
     pos = 4
@@ -39,6 +42,7 @@ def NCN_heatmap():
             potency_ot_df.to_excel(excelwriter,f'{editor}_potency')
             site_ot_df.to_excel(excelwriter, f'{editor}_site')
     return
+
 
 def C_Disease_Lib():
     aio_table = '010824_aio_table_041424_C_unique.xlsx'
@@ -97,6 +101,7 @@ def C_Disease_Lib():
             .reindex(editor_order)\
             .T.to_excel(excelwriter, f'{filename}_site_number')
 
+# For data in S15B
 def A_Disease_Lib():
     for file in ['Alib-010824_aio_table_041424_C.xlsx']:
         potency_rf = pd.read_excel(path+file,sheet_name='potency',index_col=0).dropna()
@@ -106,6 +111,7 @@ def A_Disease_Lib():
             .set_axis(range(1, 21, 1), axis=1) \
             .to_excel(excelwriter, f'{filename}_potency')
 
+# For Fig. S17
 def purity_vs_potency():
     def label_point(x, y, val, ax, con):
         a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
@@ -158,6 +164,7 @@ def purity_vs_potency():
     excelwriter.close()
     return
 
+# For Fig. S18
 def aio_heatmap(position,files,context,bool):
     def norm(raw):
         # return [float(i) / normalization * 100 for i in raw]
@@ -246,6 +253,7 @@ def aio_heatmap(position,files,context,bool):
     print([files[0]]+list(map(str,counter)))
     return
 
+# For Fig S22 and Fig 5G
 def aio_heatmap_Tad_CBEs(position,files,context,bool):
     def norm(raw):
         # return [float(i) / normalization * 100 for i in raw]
@@ -325,6 +333,7 @@ def aio_heatmap_Tad_CBEs(position,files,context,bool):
     print([files[0]]+list(map(str,counter)))
     return
 
+# For Fig S14
 def potency_heatmap():
     gRNA = 'C'*20
     df = pd.read_excel(f'{path}mean_by_position_order.xlsx', keep_default_na=False, sheet_name='C_unique_potency_percentage',index_col=0)
@@ -396,6 +405,7 @@ def potency_heatmap():
     plt.savefig(path + 'competency.svg', dpi=300)
     plt.show()
 
+# For extract data for Fig S19. Did not include ploting part, which was done in GraphPad.
 def potency_purity_bell_curve():
     options = ['potency','purity']
     purity_rf = pd.read_excel(f'{path}{aio_table}',
@@ -457,6 +467,7 @@ def potency_purity_bell_curve():
     excelwriter.close()
     return
 
+# Not used in the paper.
 def purity_vs_potency_targetC_context_dissect():
     def label_point(x, y, val, ax, con):
         a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
@@ -518,6 +529,7 @@ def purity_vs_potency_targetC_context_dissect():
     excelwriter.close()
     return
 
+# For Fig S21 B
 def purity_vs_potency_targetC_position_combined():
     def label_point(x, y, val, ax):
         a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
@@ -577,6 +589,7 @@ def purity_vs_potency_targetC_position_combined():
     plt.show()
     return
 
+# For Fig S21 A
 def purity_vs_potency_targetC_position_dissect():
     def label_point(x, y, val, ax):
         a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
@@ -634,11 +647,12 @@ def purity_vs_potency_targetC_position_dissect():
     total_potency.to_excel(excelwriter,'potency')
     total_purity.to_excel(excelwriter,'purity')
     total_site.to_excel(excelwriter,'site_number')
-    plt.savefig(f'{path}potency_vs_purity_designate_pos_TargetC.svg', dpi=600)
+    plt.savefig(f'{path}potency_vs_purity_designate_{pos}_TargetC.svg', dpi=600)
     plt.show()
     excelwriter.close()
     return
 
+# Not used in the paper.
 def targetC_lib_winning_match():
     purity_rf = pd.read_excel(f'{path}010824_aio_table_041424_TargetC_unique.xlsx',
                               sheet_name='purity',
@@ -668,6 +682,7 @@ def targetC_lib_winning_match():
     ot_df.to_excel(f'{path}targetC_unique_sweetspot.xlsx')
     return
 
+# For extract data for Fig S20. Did not include ploting part, which was done in GraphPad.
 def targetC_lib_winning_no_match():
     excelwriter = pd.ExcelWriter(f'{path}winning_no_match.xlsx')
     purity_rf = pd.read_excel(f'{path}010824_aio_table_041424_C_unique.xlsx',
@@ -737,6 +752,7 @@ def targetC_lib_winning_no_match():
     excelwriter.close()
     return
 
+# For extract data for Fig S20. Did not include ploting part, which was done in GraphPad.
 def targetC_lib_winning_no_match_position():
     def label_point(x, y, val, ax):
         a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
@@ -865,21 +881,11 @@ def making_excel_output_from_list():
     return
 
 if __name__ == '__main__':
-    # excelwriter = pd.ExcelWriter(path+'dot_scatter_plot_A_6.xlsx')
-    # C_Disease_Lib()
-    # excelwriter.close()
-    # targetC_lib_winning_no_match_position()
-
-    # making_excel_output_from_list()
-
     # FOR aio-heatmap
-    for num,file in enumerate(['Tad-CBEs(NCN)']):
-        for pos in range(5,8,1):
-            for bool in [False]:
-                # if num <= 3:
-                #     continue
-                context = file.split('(')[1][:3]
-                aio_heatmap_Tad_CBEs(pos,[file]+control,'',bool) # ploting all-in-one heatmap
-
-    # potency_heatmap()
-    # potency_purity_bell_curve()
+    # for num,file in enumerate(['Tad-CBEs(NCN)']):
+    #     for pos in range(5,8,1):
+    #         for bool in [False]:
+    #             # if num <= 3:
+    #             #     continue
+    #             context = file.split('(')[1][:3]
+    #             aio_heatmap_Tad_CBEs(pos,[file]+control,'',bool) # ploting all-in-one heatmap
