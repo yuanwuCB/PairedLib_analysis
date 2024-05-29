@@ -27,16 +27,15 @@ header = ['ID','gRNA','PAM','target_seq','edit_site_in_proto','context','clinvar
 PATH = '/home/yuanw/scratch-midway2/010823-nextseq/'
 gRNA_backbone = 'GTTTTAGAGC'
 
-def mapping(file):
+def mapping(file_name):
     counter = [0,0,0,0,0] # 1.target matches with gRNA. 2.PAM exist
     edit_dict = {}
     gRNA_orders = pd.read_excel('/project2/weixintang/yuanwu/103023-nextseq/09082023_disease_C_lib.xlsx',sheet_name='summary_final')
     gRNA_order = gRNA_orders['gRNA'].to_list()
     gRNAs = []
     num = 0
-    file_name ="050e_228lib_S1_L001"
-    with open(prefix+'%s_R1_001.fastq'%file_name) as f1:
-        with open(prefix+'%s_R2_001.fastq'%file_name) as f2:
+    with open(PATH+'%s_R1_001.fastq'%file_name) as f1:
+        with open(PATH+'%s_R2_001.fastq'%file_name) as f2:
             for gRNA_read,target_read in zip(f1.readlines(),f2.readlines()):
                 num += 1
                 if num % 4 != 2:
@@ -80,4 +79,4 @@ def mapping(file):
     return
 
 if __name__ == '__main__':
-    mapping(f'{PATH}050e_228lib.py')
+    mapping(f'{PATH}050e_228lib_L001')
