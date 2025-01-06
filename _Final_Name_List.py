@@ -22,7 +22,7 @@ editor2file = {'Tad-CBE2.4':'050e_228lib_S1_L001.xlsx','Tad-CBE3.1':'156e_228lib
                 'Tad-CBE(ACC3)':'pyx220c_228lib_S9_L001.xlsx','Tad-CBE(ACG1)':'pyx165f_228lib_S7_L001.xlsx',
                 'Tad-CBE(TCA3)':'pyx208uc_228lib_S10_L001.xlsx','Tad-CBE(TCT1)':'pYX204ua_228lib_S11_L001.xlsx',
                 'Tad-CBE(TCC1)':'pYW097ua_228lib_S13_L001.xlsx','Tad-CBE(TCG2)':'pyx205ub_228lib_S12_L001.xlsx',
-                'Tad-CBE(CCA2)':'pYW106uc_228lib_S22_L001.xlsx','Tad-CBE(CCT2)':'pYW094ub_228lib_S23_L001.xlsx',
+                'Tad-CBE(CCA2)':'pYW106ub_228lib_S21_L001.xlsx','Tad-CBE(CCT2)':'pYW094ub_228lib_S23_L001.xlsx',
                 'Tad-CBE(CCC5)':'pYW105ue_228lib_S26_L001.xlsx','Tad-CBE(CCG3)':'pYW093uc_228lib_S24_L001.xlsx',
                 'Tad-CBE(GCA1)':'pYX206ua_228lib_S15_L001.xlsx','Tad-CBE(GCT1)':'pYW095ua_228lib_S16_L001.xlsx',
                 'Tad-CBE(GCC3)':'pYW096uc_228lib_S20_L001.xlsx','Tad-CBE(GCG1)':'pYX207ua_228lib_S18_L001.xlsx',
